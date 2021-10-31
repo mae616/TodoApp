@@ -5,14 +5,19 @@ const Form = ({ addTodo }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(value)
+        if (!value) {
+            alert('何か入力してください')
+            return
+        }
         addTodo(value)
+        setValue('')
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
+                value={value}   // sumit後、テキストを空にする
                 onChange={e => {
                     setValue(e.target.value)
                 }}
