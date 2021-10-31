@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Form from './Form'
+import List from './List'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [todos, setTodos] = useState([
+        {
+            content: '課題をする'
+        },
+        {
+            content: '洗濯をする'
+        },
+        {
+            content: '電話をする'
+        }
+    ])
+
+    const addTodo = (value) => {
+        setTodos([
+            ...todos,
+            {
+                content: value
+            }
+        ])
+    }
+
+    return (
+        <>
+            <h1>Todo App</h1>
+            <Form addTodo={addTodo} />
+            <List todos={todos} />
+        </>
+    )
 }
 
-export default App;
+export default App
