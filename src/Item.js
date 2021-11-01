@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Item = ({ content, id, deleteTodo }) => {
-
-    const [isDone, setIsDone] = useState(false)
+const Item = ({ content, id, isDone, deleteTodo, setIsDone }) => {
 
     // isDone => 現在の状態の参照
     // setIsDone => 状態を更新する関数
@@ -18,7 +16,7 @@ const Item = ({ content, id, deleteTodo }) => {
             <input
                 type="checkbox"
                 onChange={() => {
-                    setIsDone(!isDone)
+                    setIsDone(id, !isDone)
                 }}
             />
 
